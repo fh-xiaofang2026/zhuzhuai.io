@@ -1,0 +1,358 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>住宅小区消防安全手册</title>
+<style>
+  :root{
+    --primary:#C8102E;
+    --primary-dark:#9B0C23;
+    --danger:#D9261C;
+    --warn:#E8A317;
+    --ink:#22272E;
+    --gray:#6B7280;
+    --line:#EDE8E0;
+    --bg:#FBF7F1;
+    --paper:#FFFFFF;
+    --soft:#FFF1E8;
+    --green:#2F8F5B;
+    --blue:#2A6DB5;
+  }
+  *{box-sizing:border-box;margin:0;padding:0}
+  html{scroll-behavior:smooth}
+  body{
+    font-family:"Noto Sans SC","PingFang SC","Microsoft YaHei",system-ui,sans-serif;
+    background:var(--bg);color:var(--ink);line-height:1.8;font-size:16px;
+  }
+  .nav{
+    position:sticky;top:0;z-index:50;background:rgba(251,247,241,.92);
+    backdrop-filter:blur(8px);border-bottom:1px solid var(--line);
+    padding:14px 24px;display:flex;align-items:center;justify-content:space-between;
+  }
+  .nav .logo{font-weight:800;font-size:17px;color:var(--primary-dark)}
+  .nav .logo span{color:var(--ink)}
+  .nav ul{display:flex;gap:20px;list-style:none;flex-wrap:wrap}
+  .nav a{color:var(--gray);text-decoration:none;font-size:14px}
+  .nav a:hover{color:var(--primary)}
+
+  .hero{
+    padding:60px 24px 50px;text-align:center;
+    background:
+      radial-gradient(circle at 15% 20%, rgba(200,16,46,.12), transparent 40%),
+      radial-gradient(circle at 85% 80%, rgba(232,163,23,.10), transparent 40%),
+      var(--bg);
+  }
+  .hero .tag{
+    display:inline-block;background:var(--soft);color:var(--primary-dark);
+    padding:6px 16px;border-radius:999px;font-size:13px;font-weight:600;margin-bottom:20px;
+  }
+  .hero h1{font-size:clamp(28px,5.5vw,46px);font-weight:900;line-height:1.25;margin-bottom:16px}
+  .hero h1 em{font-style:normal;color:var(--primary)}
+  .hero p{color:var(--gray);max-width:640px;margin:0 auto 28px;font-size:16px}
+  .hero .badges{display:flex;gap:14px;justify-content:center;flex-wrap:wrap}
+  .hero .badge-item{background:var(--paper);border:1px solid var(--line);border-radius:10px;padding:12px 20px;font-size:14px}
+  .hero .badge-item b{color:var(--primary-dark);display:block;font-size:20px;font-weight:900}
+
+  .wrap{max-width:960px;margin:0 auto;padding:40px 24px 80px}
+
+  .chapter{margin-bottom:44px}
+  .chap-head{display:flex;align-items:center;gap:14px;margin-bottom:20px}
+  .chap-head .no{
+    font-size:14px;font-weight:800;color:#fff;background:var(--primary);
+    width:34px;height:34px;border-radius:8px;display:flex;align-items:center;justify-content:center;flex-shrink:0;
+  }
+  .chap-head h2{font-size:23px;font-weight:800}
+  .chap-head .en{color:var(--gray);font-size:13px;letter-spacing:1px;margin-left:auto}
+
+  .card{background:var(--paper);border:1px solid var(--line);border-radius:14px;padding:26px;margin-bottom:16px}
+  .card h3{font-size:18px;font-weight:700;margin-bottom:12px}
+  .card p{margin-bottom:10px}
+  .card ul,.card ol{margin:8px 0 8px 22px}
+  .card li{margin-bottom:6px}
+
+  .grid2{display:grid;grid-template-columns:1fr 1fr;gap:16px}
+  .grid3{display:grid;grid-template-columns:repeat(3,1fr);gap:14px}
+
+  .mini{background:var(--soft);border-radius:10px;padding:16px}
+  .mini b{color:var(--primary-dark);display:block;margin-bottom:6px;font-size:15px}
+  .mini p{font-size:14px;color:var(--ink);margin:0}
+
+  .warn{border-left:4px solid var(--danger);background:#FDECEB;border-radius:0 10px 10px 0;padding:14px 18px;margin:14px 0;font-size:15px}
+  .warn b{color:var(--danger)}
+  .info{border-left:4px solid var(--primary);background:var(--soft);border-radius:0 10px 10px 0;padding:14px 18px;margin:14px 0;font-size:15px}
+  .bluebox{border-left:4px solid var(--blue);background:#EAF2FB;border-radius:0 10px 10px 0;padding:14px 18px;margin:14px 0;font-size:15px}
+
+  table{width:100%;border-collapse:collapse;margin:14px 0;font-size:14px}
+  th,td{border:1px solid var(--line);padding:10px 12px;text-align:left;vertical-align:top}
+  th{background:var(--soft);color:var(--primary-dark);font-weight:700}
+
+  .do-dont{display:grid;grid-template-columns:1fr 1fr;gap:16px}
+  .do,.dont{border-radius:12px;padding:20px}
+  .do{background:#EAF6EE;border:1px solid #BFE3CE}
+  .dont{background:#FDECEB;border:1px solid #F5C4C0}
+  .do h4{color:var(--green);margin-bottom:10px}
+  .dont h4{color:var(--danger);margin-bottom:10px}
+  .do ul,.dont ul{margin-left:18px;font-size:14px}
+  .do li,.dont li{margin-bottom:6px}
+
+  .steps{display:grid;grid-template-columns:repeat(4,1fr);gap:12px;margin:16px 0}
+  .step{background:var(--soft);border-radius:10px;padding:16px 14px;text-align:center}
+  .step .num{width:30px;height:30px;border-radius:50%;background:var(--primary);color:#fff;font-weight:800;display:inline-flex;align-items:center;justify-content:center;margin-bottom:8px}
+  .step b{display:block;font-size:15px;margin-bottom:4px;color:var(--primary-dark)}
+  .step span{font-size:13px;color:var(--gray);line-height:1.5}
+
+  .formula{text-align:center;background:var(--ink);color:#fff;border-radius:14px;padding:26px 20px;margin:16px 0}
+  .formula .big{font-size:clamp(20px,3.6vw,28px);font-weight:900;letter-spacing:2px;margin-bottom:8px}
+  .formula .big em{font-style:normal;color:#FFB08A}
+
+  .contacts{display:grid;grid-template-columns:repeat(3,1fr);gap:14px}
+  .contact{background:var(--paper);border:1px solid var(--line);border-radius:12px;padding:18px;text-align:center}
+  .contact .num{font-size:30px;font-weight:900;color:var(--danger)}
+  .contact .lbl{font-size:14px;color:var(--gray);margin-top:4px}
+
+  footer{text-align:center;padding:28px 20px;color:var(--gray);font-size:13px;border-top:1px solid var(--line)}
+
+  @media (max-width:720px){
+    .nav ul{display:none}
+    .grid2,.grid3,.do-dont{grid-template-columns:1fr}
+    .steps{grid-template-columns:repeat(2,1fr)}
+    .contacts{grid-template-columns:1fr}
+    .wrap{padding:28px 16px 60px}
+    .chap-head .en{display:none}
+  }
+  @media print{.nav{display:none}body{background:#fff}}
+</style>
+</head>
+<body>
+
+<nav class="nav">
+  <div class="logo">住宅小区 <span>消防安全</span></div>
+  <ul>
+    <li><a href="#s1">高层火灾</a></li>
+    <li><a href="#s2">楼道堆物</a></li>
+    <li><a href="#s3">电动车</a></li>
+    <li><a href="#s4">家庭防火</a></li>
+    <li><a href="#s5">消防通道</a></li>
+    <li><a href="#s6">器材配备</a></li>
+    <li><a href="#s7">逃生自救</a></li>
+    <li><a href="#s8">应急电话</a></li>
+  </ul>
+</nav>
+
+<header class="hero">
+  <div class="tag">致全体业主与住户</div>
+  <h1>住宅小区<em>消防安全手册</em></h1>
+  <p>楼道堆物、电动车进楼、消防车被堵、家里油锅起火——住宅火灾离每个家庭都不远。这本手册讲的是住户必须知道的消防常识。</p>
+  <div class="badges">
+    <div class="badge-item"><b>8</b>大消防主题</div>
+    <div class="badge-item"><b>3</b>分钟黄金扑救</div>
+    <div class="badge-item"><b>119</b>火警电话</div>
+  </div>
+</header>
+
+<div class="wrap">
+
+  <!-- 1 高层火灾 -->
+  <section class="chapter" id="s1">
+    <div class="chap-head">
+      <div class="no">1</div>
+      <h2>高层住宅火灾逃生与应对</h2>
+    </div>
+    <div class="card">
+      <h3>高层火灾的特殊性</h3>
+      <ul>
+        <li>烟囱效应：楼梯间、电梯井像烟囱，烟气几十秒就能窜到几十层。</li>
+        <li>外部救援难：普通消防车云梯一般到50米左右（约15层），更高层主要靠自救和建筑内消防设施。</li>
+        <li>人员集中：一层一户或多户，老人小孩多，疏散速度慢。</li>
+      </ul>
+      <div class="warn"><b>关键原则：</b>着火层在你<strong>楼下</strong>，且楼梯未冒烟——可以沿楼梯向下逃生；着火层在你<strong>楼上</strong>或你家门被烟火封住——<strong>不要盲目跑</strong>，退回室内闭门待救。</div>
+    </div>
+    <div class="card">
+      <h3>什么时候向下跑，什么时候待在屋里</h3>
+      <table>
+        <thead><tr><th>情况</th><th>正确做法</th></tr></thead>
+        <tbody>
+          <tr><td>本层或楼下着火，楼梯间无烟火</td><td>用湿毛巾捂口鼻，低姿沿楼梯向下撤离</td></tr>
+          <tr><td>楼上着火，烟气沿楼梯往下窜</td><td>退回室内，关紧门，不要开门探看</td></tr>
+          <tr><td>家门、楼道已被浓烟封住</td><td>千万不要开门，到窗口求救</td></tr>
+          <tr><td>整栋楼都是烟，哪也走不了</td><td>关门堵缝、浇水降温、等待消防救援</td></tr>
+        </tbody>
+      </table>
+      <div class="bluebox"><b>记住：</b>高层火灾，<strong>电梯绝对不能坐</strong>。电梯井会成为烟囱，且可能断电停运。</div>
+    </div>
+  </section>
+
+  <!-- 2 楼道堆物 -->
+  <section class="chapter" id="s2">
+    <div class="chap-head">
+      <div class="no">2</div>
+      <h2>楼道堆物的危害与治理</h2>
+    </div>
+    <div class="card">
+      <h3>楼道里这些东西必须清走</h3>
+      <ul>
+        <li>纸箱子、旧报纸、空瓶罐——一点就着，燃烧产生剧毒烟气。</li>
+        <li>旧家具、鞋柜、婴儿车、自行车——挤占疏散宽度。</li>
+        <li>鞋柜、鞋架放在门口——着火时封堵入户门。</li>
+        <li>电动车、电池——进楼就是定时炸弹。</li>
+        <li>祭祀用品、纸箱、打火机、蚊香——靠近电表箱、开关箱。</li>
+      </ul>
+      <div class="warn"><b>法律责任：</b>《消防法》第二十八条规定，任何单位、个人不得占用、堵塞、封闭疏散通道、安全出口。楼道堆物引发火灾，堆放人要承担民事赔偿，严重的追究刑事责任。</div>
+    </div>
+    <div class="card">
+      <h3>防火门为什么不能常开</h3>
+      <p>楼道、楼梯间的防火门是用来隔烟阻火的。很多住户图方便用楔子、钩子把门顶住，让它常开——一旦发生火灾，烟气会长驱直入楼梯间，整栋楼的逃生通道瞬间报废。</p>
+      <div class="info"><b>正确做法：</b>防火门保持常闭，但不能锁死；进出后顺手把门带上。</div>
+    </div>
+  </section>
+
+  <!-- 3 电动车 -->
+  <section class="chapter" id="s3">
+    <div class="chap-head">
+      <div class="no">3</div>
+      <h2>电动车消防安全管理</h2>
+    </div>
+    <div class="card">
+      <div class="do-dont">
+        <div class="dont">
+          <h4>严禁做</h4>
+          <ul>
+            <li>电动车推上楼、进电梯、进家门</li>
+            <li>电池拿回家充电</li>
+            <li>从窗户拉"飞线"充电</li>
+            <li>夜间过夜长时间充电</li>
+            <li>改装电池、使用杂牌充电器</li>
+          </ul>
+        </div>
+        <div class="do">
+          <h4>应该这样做</h4>
+          <ul>
+            <li>到小区集中充电桩充电</li>
+            <li>充电时间不超过8小时</li>
+            <li>使用原厂电池和原装充电器</li>
+            <li>电池鼓包、发热、异味立即停用</li>
+            <li>看到邻居电动车进楼，主动劝阻或报物业</li>
+          </ul>
+        </div>
+      </div>
+      <div class="warn"><b>为什么严管：</b>电动车锂电池火灾<strong>30秒起火、3分钟温度达1200℃</strong>，产生大量剧毒烟气，楼道里几十秒就能让人窒息。</div>
+    </div>
+  </section>
+
+  <!-- 4 家庭防火 -->
+  <section class="chapter" id="s4">
+    <div class="chap-head">
+      <div class="no">4</div>
+      <h2>家庭火灾高发隐患</h2>
+    </div>
+    <div class="card">
+      <div class="grid3">
+        <div class="mini"><b>厨房油锅</b><p>油锅起火：盖锅盖或倒蔬菜，用灭火毯。<strong>严禁泼水</strong>，热油遇水会爆燃飞溅。</p></div>
+        <div class="mini"><b>厨房燃气</b><p>人走火灭；闻到煤气味先关阀、开窗、到室外再打电话，严禁开灯点火。</p></div>
+        <div class="mini"><b>用电</b><p>插线板不串接、大功率电器不同时用、充电器不长时间不拔、电线老化及时换。</p></div>
+        <div class="mini"><b>卧床吸烟</b><p>酒后、疲劳时卧床吸烟极易引燃被褥；烟头要彻底掐灭再扔。</p></div>
+        <div class="mini"><b>儿童玩火</b><p>打火机、火柴放在孩子拿不到的地方；教育孩子不要玩火。</p></div>
+        <div class="mini"><b>取暖设备</b><p>电暖器、小太阳远离窗帘、沙发、被褥；人走断电。</p></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- 5 消防通道 -->
+  <section class="chapter" id="s5">
+    <div class="chap-head">
+      <div class="no">5</div>
+      <h2>消防通道管理要求</h2>
+    </div>
+    <div class="card">
+      <ul>
+        <li>小区道路、消防车通道上<strong>严禁停车</strong>，哪怕临时停几分钟。</li>
+        <li>小区入口、转弯处、消火栓前不得设置石墩、花坛、隔离桩阻挡。</li>
+        <li>地下车库消火栓、灭火器前方不得停车、堆物。</li>
+        <li>看到车辆占用消防通道，<strong>立即报物业</strong>，必要时拨打119或122。</li>
+      </ul>
+      <div class="warn"><b>记住：</b>消防通道就是<strong>生命通道</strong>。一辆车停在通道上，消防车进不来，整栋楼的人就少了一条生路。</div>
+    </div>
+  </section>
+
+  <!-- 6 器材配备 -->
+  <section class="chapter" id="s6">
+    <div class="chap-head">
+      <div class="no">6</div>
+      <h2>家庭消防器材配备</h2>
+    </div>
+    <div class="card">
+      <h3>建议每户配备</h3>
+      <table>
+        <thead><tr><th>器材</th><th>用途</th><th>放置位置</th></tr></thead>
+        <tbody>
+          <tr><td>干粉灭火器（4kg ABC）</td><td>扑救初期固体、液体、带电火灾</td><td>厨房门口、玄关易取处</td></tr>
+          <tr><td>灭火毯</td><td>覆盖油锅火、披在身上逃生</td><td>厨房灶台旁</td></tr>
+          <tr><td>防烟面罩（过滤式自救呼吸器）</td><td>浓烟中呼吸逃生，每户按人头配</td><td>卧室门口、床头</td></tr>
+          <tr><td>强光手电筒</td><td>停电、浓烟中照明、发求救信号</td><td>床头</td></tr>
+          <tr><td>家用燃气报警器</td><td>燃气泄漏声光报警</td><td>厨房</td></tr>
+        </tbody>
+      </table>
+      <h3>灭火器使用：提拔握压</h3>
+      <div class="steps">
+        <div class="step"><div class="num">1</div><b>提</b><span>提起灭火器，距火焰2–3米</span></div>
+        <div class="step"><div class="num">2</div><b>拔</b><span>拔掉保险销</span></div>
+        <div class="step"><div class="num">3</div><b>握</b><span>一手握喷管，一手压压把</span></div>
+        <div class="step"><div class="num">4</div><b>压</b><span>对准火焰根部左右扫射</span></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- 7 逃生自救 -->
+  <section class="chapter" id="s7">
+    <div class="chap-head">
+      <div class="no">7</div>
+      <h2>火灾逃生与自救</h2>
+    </div>
+    <div class="card">
+      <h3>逃不出去时，五步法</h3>
+      <ol>
+        <li><b>关紧房门</b>：把迎火的门关上，堵住浓烟。</li>
+        <li><b>塞门缝</b>：用湿毛巾、湿床单塞住门缝，阻止烟气渗入。</li>
+        <li><b>降温</b>：向门上、门上的窗帘浇水降温，延缓火势。</li>
+        <li><b>开窗求救</b>：到窗口挥鲜艳衣物、打手电筒、喊"救命"，让消防员看到你。</li>
+        <li><b>不要跳楼</b>：三层以上跳楼死亡率极高，等待专业救援。</li>
+      </ol>
+      <div class="formula">
+        <div class="big">低姿 · 捂鼻 · 关门 · <em>不乘梯 · 不恋财</em></div>
+      </div>
+    </div>
+    <div class="card">
+      <h3>老人、儿童、病人重点关照</h3>
+      <ul>
+        <li>和老人同住，把逃生路线、灭火器位置告诉老人，练一遍。</li>
+        <li>有孩子的家庭，卧室门不要反锁，方便紧急进入。</li>
+        <li>行动不便的家人，预先约定好火灾时谁负责搀扶、从哪个出口走。</li>
+      </ul>
+    </div>
+  </section>
+
+  <!-- 8 电话 -->
+  <section class="chapter" id="s8">
+    <div class="chap-head">
+      <div class="no">8</div>
+      <h2>紧急联系电话</h2>
+    </div>
+    <div class="card">
+      <div class="contacts">
+        <div class="contact"><div class="num">119</div><div class="lbl">火警</div></div>
+        <div class="contact"><div class="num">120</div><div class="lbl">急救</div></div>
+        <div class="contact"><div class="num">110</div><div class="lbl">公安报警</div></div>
+      </div>
+      <div class="info" style="margin-top:16px"><b>建议：</b>把上述电话抄一张贴在冰箱上或存进家人手机，老人孩子也能看见。</div>
+    </div>
+  </section>
+
+</div>
+
+<footer>
+  凤凰街道综合行政执法和应急管理办公室 · 住宅小区消防安全手册 · 2026版
+</footer>
+
+</body>
+</html>
